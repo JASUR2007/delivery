@@ -56,6 +56,11 @@ php artisan serve
 - **[docs/api.md](docs/api.md):** Документация по REST API эндпоинтам с примерами запросов и ответов.
 - **[docs/architecture.md](docs/architecture.md):** Описание слоев архитектуры, DTO, сервисов, репозиториев и политик безопасности.
 - **[docs/erd.md](docs/erd.md):** Диаграмма связей сущностей базы данных (Mermaid ERD).
+- **UML диаграммы:**
+  - [UML Use Case Diagram](docs/uml-use-case.md) — прецеденты и матрица прав доступа ролей.
+  - [UML Sequence Diagram: Оплата](docs/uml-sequence-payment.md) — последовательность 5 проверок оплат и блокировок.
+  - [UML State Machine Diagram](docs/uml-state-diagram.md) — жизненные циклы договоров, этапов, штрафов и оплат.
+  - [UML Class Diagram](docs/uml-class-diagram.md) — диаграмма классов доменной модели, сервисов и DTO.
 - **Swagger UI:** `http://localhost:8000/api/documentation`
 
 ---

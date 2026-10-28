@@ -76,3 +76,14 @@ Foydalanuvchi huquqlari faqat frontend tugmalarini yashirish bilan cheklanmay, s
 
 ### 2.5 Tranzaksiya va Bir vaqtda ishlash (Concurrency Control)
 Ikki buxgalter bir vaqtning o‘zida bitta smeta oyining oxirgi mablag‘ini ishlatishga yoki bir bosqichni to‘lashga uringan holatda `lockForUpdate()` orqali tegishli yozuvlar qulflanadi. Biri muvaffaqiyatli o‘tib qoldiqni kamaytiradi, ikkinchisi qulf yechilgach yangilangan qoldiqni ko‘rib xatolik oladi. Tizimda balans hech qachon manfiy bo‘lmaydi.
+
+---
+
+## 3. UML Diogrammalar (UML Diagrams)
+
+Tizim jarayonlari va tuzilishi UML standartlari asosida vizualizatsiya qilingan:
+* **[UML Use Case Diagram](uml-use-case.md):** Rollar (Ijrochi, Boshliq, Buxgalter) va tizim pretsedentlari.
+* **[UML Sequence Diagram: To‘lov jarayoni](uml-sequence-payment.md):** 5 bosqichli tekshiruv va pesimistik blokirovka ketma-ketligi.
+* **[UML State Machine Diagram](uml-state-diagram.md):** Shartnoma, to‘lov bosqichi, jarima va to‘lov holatlarining o‘tish diagrammasi.
+* **[UML Class Diagram](uml-class-diagram.md):** Domen modellari, DTOlar, servislar va ularning o‘zaro bog‘liqlik diagrammasi.
+* **[ERD Ma’lumotlar bazasi](erd.md):** Jadvallar va kalitlar (PK/FK) aloqalari.
