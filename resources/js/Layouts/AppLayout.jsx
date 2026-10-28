@@ -12,16 +12,8 @@ import {
 } from 'lucide-react';
 
 export default function AppLayout({ children, title }) {
-    const { auth, demo_users = [], flash = {} } = usePage().props;
+    const { auth, flash = {} } = usePage().props;
     const currentUser = auth?.user;
-    const [isSwitching, setIsSwitching] = useState(false);
-
-    const handleSwitchRole = (userId) => {
-        setIsSwitching(true);
-        router.post('/demo-switch', { user_id: userId }, {
-            onFinish: () => setIsSwitching(false)
-        });
-    };
 
     const getRoleColor = (role) => {
         switch (role) {
@@ -86,46 +78,23 @@ export default function AppLayout({ children, title }) {
                             </nav>
                         </div>
 
-                        {/* Demo User Switcher */}
+                        {/* Current User & Logout */}
                         <div className="flex items-center space-x-3">
-                            <div className="flex bg-slate-100 p-1 rounded-lg border border-slate-200">
-                                {demo_users.map((u) => {
-                                    const isSelected = currentUser?.id === u.id;
-                                    return (
-                                        <button
-                                            key={u.id}
-                                            onClick={() => handleSwitchRole(u.id)}
-                                            disabled={isSwitching}
-                                            className={`px-2.5 py-1 text-xs font-medium rounded-md transition flex items-center space-x-1.5 ${
-                                                isSelected
-                                                    ? 'bg-white shadow-xs text-slate-900 font-semibold'
-                                                    : 'text-slate-600 hover:text-slate-900'
-                                            }`}
-                                        >
-                                            <span className={`w-2 h-2 rounded-full ${
-                                                u.role === 'executor' ? 'bg-blue-500' :
-                                                u.role === 'supervisor' ? 'bg-amber-500' : 'bg-emerald-500'
-                                            }`} />
-                                            <span>{u.role_label}</span>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-
                             {currentUser && (
                                 <div className="flex items-center space-x-2">
-                                    <div className={`hidden sm:flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getRoleColor(currentUser.role)}`}>
+                                    <div className={`flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getRoleColor(currentUser.role)}`}>
                                         <UserCheck className="w-3.5 h-3.5 mr-1" />
                                         <span>{currentUser.name}</span>
+                                        <span className="ml-1 opacity-75">({currentUser.role_label})</span>
                                     </div>
                                     <button
                                         type="button"
                                         onClick={() => router.post('/logout')}
                                         title="Tizimdan chiqish"
-                                        className="inline-flex items-center px-2 py-1 text-xs font-medium text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
+                                        className="inline-flex items-center px-2.5 py-1 text-xs font-medium text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition border border-transparent hover:border-rose-200"
                                     >
                                         <LogOut className="w-3.5 h-3.5 mr-1" />
-                                        <span className="hidden sm:inline">Chiqish</span>
+                                        <span>Chiqish</span>
                                     </button>
                                 </div>
                             )}
